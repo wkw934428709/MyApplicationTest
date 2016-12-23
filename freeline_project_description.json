@@ -1,0 +1,96 @@
+{
+    "project_type": "gradle",
+    "android_gradle_plugin_version": "2.2.0",
+    "freeline_gradle_plugin_version": "0.8.3",
+    "java_home": "/home/kevin/android-studio/jre",
+    "freeline_cache_dir": "/home/kevin/Documents/TCL/KK_application",
+    "auto_dependency": true,
+    "product_flavor": "",
+    "build_script": "./gradlew :app:assembleDebug",
+    "build_script_work_directory": "",
+    "root_dir": "/home/kevin/Documents/TCL/KK_application",
+    "main_project_name": "app",
+    "main_project_dir": "app",
+    "build_directory": "/home/kevin/Documents/TCL/KK_application/app/build",
+    "build_cache_dir": "/home/kevin/Documents/TCL/KK_application/app/build/freeline",
+    "build_tools_version": "25.0.0",
+    "sdk_directory": "/home/kevin/Android/Sdk",
+    "build_tools_directory": "/home/kevin/Android/Sdk/build-tools/25.0.0",
+    "compile_sdk_version": "android-25",
+    "compile_sdk_directory": "/home/kevin/Android/Sdk/platforms/android-25",
+    "package": "com.example.kevin.kk_application",
+    "debug_package": "com.example.kevin.kk_application",
+    "main_manifest_path": "/home/kevin/Documents/TCL/KK_application/app/src/main/AndroidManifest.xml",
+    "launcher": "com.example.kevin.kk_application.MainActivity",
+    "apk_path": "/home/kevin/Documents/TCL/KK_application/app/build/outputs/apk/app-debug.apk",
+    "extra_dep_res_paths": [
+        
+    ],
+    "exclude_dep_res_paths": [
+        
+    ],
+    "main_r_path": "/home/kevin/Documents/TCL/KK_application/app/build/generated/source/r/debug/R.java",
+    "use_jdk8": true,
+    "main_src_directory": [
+        "/home/kevin/Documents/TCL/KK_application/app/src/debug/java",
+        "/home/kevin/Documents/TCL/KK_application/app/src/main/java"
+    ],
+    "main_res_directory": [
+        "/home/kevin/Documents/TCL/KK_application/app/src/debug/res",
+        "/home/kevin/Documents/TCL/KK_application/app/src/main/res"
+    ],
+    "main_assets_directory": [
+        "/home/kevin/Documents/TCL/KK_application/app/src/debug/assets",
+        "/home/kevin/Documents/TCL/KK_application/app/src/main/assets"
+    ],
+    "main_jni_directory": [
+        "/home/kevin/Documents/TCL/KK_application/app/src/debug/jni",
+        "/home/kevin/Documents/TCL/KK_application/app/src/main/jni"
+    ],
+    "main_jniLibs_directory": [
+        "/home/kevin/Documents/TCL/KK_application/app/src/debug/jniLibs",
+        "/home/kevin/Documents/TCL/KK_application/app/src/main/jniLibs"
+    ],
+    "project_source_sets": {
+        "app": {
+            "main_src_directory": [
+                "/home/kevin/Documents/TCL/KK_application/app/src/debug/java",
+                "/home/kevin/Documents/TCL/KK_application/app/src/main/java"
+            ],
+            "main_res_directory": [
+                "/home/kevin/Documents/TCL/KK_application/app/src/debug/res",
+                "/home/kevin/Documents/TCL/KK_application/app/src/main/res"
+            ],
+            "main_assets_directory": [
+                "/home/kevin/Documents/TCL/KK_application/app/src/debug/assets",
+                "/home/kevin/Documents/TCL/KK_application/app/src/main/assets"
+            ],
+            "main_jni_directory": [
+                "/home/kevin/Documents/TCL/KK_application/app/src/debug/jni",
+                "/home/kevin/Documents/TCL/KK_application/app/src/main/jni"
+            ],
+            "main_jniLibs_directory": [
+                "/home/kevin/Documents/TCL/KK_application/app/src/debug/jniLibs",
+                "/home/kevin/Documents/TCL/KK_application/app/src/main/jniLibs"
+            ],
+            "main_manifest_path": "/home/kevin/Documents/TCL/KK_application/app/src/main/AndroidManifest.xml"
+        }
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "/home/kevin/Documents/TCL/KK_application/app"
+        }
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "databinding": [
+        
+    ],
+    "databinding_modules": [
+        
+    ]
+}
