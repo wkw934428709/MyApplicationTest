@@ -20,12 +20,20 @@ import android.widget.TextView;
 public class HorizontalScrollView extends ViewGroup {
 
     private static final String TAG = "kk";
-    int mChildCount, mChildWith;
+    private int mChildCount, mChildWith;
     private Scroller mScroller;
     private VelocityTracker mVelocityTracker;
     private int mLastX;
     private int mLastY;
     private int mChildIndex;
+    private int mCount;
+
+    private static final int TOUCH_STATE_RESET = 0;
+    private static final int TOUCH_STATE_SCROLLING = 1;
+    private static final int SNAP_VELOCITY = 600;
+
+    private int mTouchState = TOUCH_STATE_RESET;
+    private int mCurScreen = 0;
 
     public HorizontalScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -36,26 +44,23 @@ public class HorizontalScrollView extends ViewGroup {
     private void init() {
         if(mScroller == null){
             mScroller = new Scroller(getContext());
-            mVelocityTracker = VelocityTracker.obtain();
         }
     }
 
     @Override
     public void computeScroll() {
-        Log.e(TAG,"HHHH::computeScroll ");
-//        super.computeScroll();
         if(mScroller.computeScrollOffset()){
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
             postInvalidate();
         }
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        Log.e(TAG,"HHHH::onDetachedFromWindow ");
-        mVelocityTracker.recycle();
-        super.onDetachedFromWindow();
-    }
+//    @Override
+//    protected void onDetachedFromWindow() {
+//        Log.e(TAG,"HHHH::onDetachedFromWindow ");
+//        mVelocityTracker.recycle();
+//        super.onDetachedFromWindow();
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -83,24 +88,6 @@ public class HorizontalScrollView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
-/*        int childLeft = 0;
-        final int childCount = getChildCount();
-        mChildCount = childCount;
-        for (int j = 0; j < childCount; j++) {
-            final View childView = getChildAt(j);
-            if(childView.getVisibility() != View.GONE){
-                final int childWith = childView.getMeasuredWidth();
-                mChildWith = childWith;
-                childView.layout(childLeft, 0, childLeft + childWith,
-                        + childView.getMeasuredHeight());
-                childLeft += childWith;
-            }
-        }*/
-//
-//        for (int j = 0; j < getChildCount(); j++) {
-//            child = getChildAt(j);
-//            child.layout(i, i1, i2, i3);
-//        }
         int childLeft = 0;
         final int childCount = getChildCount();
         mChildCount = childCount;
@@ -119,38 +106,51 @@ public class HorizontalScrollView extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.e(TAG,"HHHH::onTouchEvent ");
-        mVelocityTracker.addMovement(event);
         int x = (int) event.getX();
         int y = (int) event.getY();
+        if (mVelocityTracker == null) {
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+        mVelocityTracker.addMovement(event);
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                Log.e(TAG,"HHHH::ACTION_DOWN ");
-                if (!mScroller.isFinished()){
-                    mScroller.abortAnimation();
+                mLastX = x;
+                //this startScroll can smooth to the destination
+//                mCount++;
+//                mScroller.startScroll((mCount - 1) * mChildWith, 0, mChildWith, 0, 3000);
+//                invalidate();
+                if (mScroller != null) {
+                    if(!mScroller.isFinished()){
+                        mScroller.abortAnimation();
+                    }
                 }
                 break;
             case  MotionEvent.ACTION_MOVE:
-                Log.e(TAG,"HHHH::ACTION_MOVE ");
-                int deltaX = x - mLastX;
-                int deltaY = y - mLastY;
-                scrollTo(-deltaX, 0);
+                Log.e(TAG,"HHHH::ACTION_DOWN  x :" + x);
+                int scrollX = getScrollX();
+                Log.e(TAG,"HHHH::ACTION_DOWN  scrollX : "  + scrollX);
+                scrollBy(-(x - mLastX), 0);
+                mLastX = x;
                 break;
             case MotionEvent.ACTION_UP:
-                Log.e(TAG,"HHHH::ACTION_UP ");
-                int scrollX = getScrollX();
-                int scrollToChildIndex = scrollX / mChildWith;
-                mVelocityTracker.computeCurrentVelocity(1000);
-                float xVelocity = mVelocityTracker.getXVelocity();
-                if(Math.abs(xVelocity) >= 50){
-                    mChildIndex = xVelocity > 0 ? mChildIndex - 1 : mChildIndex + 1;
+                final VelocityTracker velocityTracker = mVelocityTracker;
+                velocityTracker.computeCurrentVelocity(1000);
+                int velocityX = (int) velocityTracker.getXVelocity();
+                Log.e(TAG, "ACTION_UP velocityX : " + velocityX);
+                if(velocityX > SNAP_VELOCITY && mCurScreen > 0){
+                    Log.e(TAG," snap to Left");
+                    snapToScreen(mCurScreen - 1);
+                }else if (velocityX < -SNAP_VELOCITY && mCurScreen < (getChildCount() - 1)){
+                    Log.e(TAG," snap to Left");
+                    snapToScreen(mCurScreen + 1);
                 }else {
-                    mChildIndex = (scrollX + mChildWith / 2) / mChildWith;
+                    snapToDestination();
                 }
-                mChildIndex = Math.max(0, Math.min(mChildIndex, mChildCount - 1));
-                int dx = mChildIndex * mChildWith - scrollX;
-                smoothScrollBy(dx, 0);
-                mVelocityTracker.clear();
+                if (mVelocityTracker != null) {
+                    mVelocityTracker.recycle();
+                    mVelocityTracker = null;
+                }
+                mTouchState = TOUCH_STATE_RESET;
                 break;
         }
 
@@ -159,8 +159,26 @@ public class HorizontalScrollView extends ViewGroup {
         return true;
     }
 
+    private void snapToDestination() {
+        int scrollX = getScrollX();
+        int scrollY = getScrollY();
+        Log.e(TAG, " snapToDestination::scrollX : " + scrollX);
+        int destScreen = (scrollX + mChildWith / 2) / mChildWith;
+        snapToScreen(destScreen);
+        Log.e(TAG, " snapToScreen::destScreen : " + destScreen);
+    }
+
+    private void snapToScreen(int position) {
+        mCurScreen = position;
+        if(mCurScreen > getChildCount() - 1)
+            mCurScreen = getChildCount() - 1 ;
+        int dx = mCurScreen * mChildWith - getScrollX();
+        mScroller.startScroll(getScrollX(), 0, dx, 0, Math.abs(dx) * 2);
+        invalidate();
+    }
+
     private void smoothScrollBy(int dx, int i) {
-        mScroller.startScroll(getScrollX(), 0, dx, 500);
+        mScroller.startScroll(getScrollX(), 0, dx, 1000);
         invalidate();
     }
 /*    @Override
