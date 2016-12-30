@@ -8,18 +8,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.kevin.kk_application.ViewTouchActivity">
+    tools:context="com.example.kevin.kk_application.Activity.ViewTouchActivity">
 
-    <com.example.kevin.kk_application.ViewTouchFrame
+    <com.example.kevin.kk_application.View.ViewTouchFrame
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.kevin.kk_application.MyViewTouchTestListView
+        <com.example.kevin.kk_application.View.MyViewTouchTestListView
             android:layout_width="200dp"
             android:layout_height="200dp">
 
-        </com.example.kevin.kk_application.MyViewTouchTestListView>
-    </com.example.kevin.kk_application.ViewTouchFrame>
+        </com.example.kevin.kk_application.View.MyViewTouchTestListView>
+    </com.example.kevin.kk_application.View.ViewTouchFrame>
 
 </RelativeLayout>
