@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Camera;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -146,6 +147,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
+        Camera camera;
         Intent intent = null;
         switch (view.getId()){
             case R.id.button:
@@ -159,6 +161,18 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.button2:
                 intent = new Intent(this,TouchAndMoveActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button4:
+                intent = new Intent(this,LauncherDemo1.class);
+                startActivity(intent);
+                break;
+            case R.id.button5:
+                intent = new Intent(this,ViewPageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.button6:
+                intent = new Intent(this,Rotate3DActivity.class);
                 startActivity(intent);
                 break;
         }

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CycleView">
-        <attr name="circle_color" format="color"/>
-    </declare-styleable>
+
     <attr name="icvp_min_page_scale_offset" format="dimension"/>
     <attr name="icvp_center_page_scale_offset" format="dimension"/>
     <attr name="icvp_min_page_scale" format="float"/>
@@ -30,4 +28,5 @@
         <attr name="icvp_scroll_duration"/>
         <attr name="icvp_interpolator"/>
     </declare-styleable>
+
 </resources>

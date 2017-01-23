@@ -3,9 +3,11 @@
     package="com.example.kevin.kk_application.Activity"
     android:sharedUserId="test.kk">
 
+    <permission android:name="android.permission.WRITE_APN_SETTINGS" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_menu_manage"
+        android:icon="@drawable/composer_button"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,7 +27,11 @@
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ViewTouchActivity" />
-        <activity android:name=".ViewGroupActivity"></activity>
+        <activity android:name=".ViewGroupActivity" />
+        <activity android:name=".TouchAndMoveActivity" />
+        <activity android:name=".LauncherDemo1" />
+        <activity android:name=".ViewPageActivity" />
+        <activity android:name=".Rotate3DActivity"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.kevin.kk_application.Activity.ViewTouchActivity">
 
+<!--
     <com.example.kevin.kk_application.View.ViewTouchFrame
         android:gravity="center"
         android:layout_width="match_parent"
@@ -21,5 +22,10 @@
 
         </com.example.kevin.kk_application.View.MyViewTouchTestListView>
     </com.example.kevin.kk_application.View.ViewTouchFrame>
+-->
 
+    <com.example.kevin.kk_application.View.WaveView
+        android:id="@+id/wave_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
