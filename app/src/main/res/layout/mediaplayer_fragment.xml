@@ -4,4 +4,24 @@
     android:background="@color/dark_yellow"
     android:layout_height="match_parent">
 
+    <Button
+        android:text="play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:id="@+id/play"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:text="stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:layout_gravity="center"
+        android:id="@+id/stop"
+        android:textAllCaps="false"
+        />
+
 </LinearLayout>
