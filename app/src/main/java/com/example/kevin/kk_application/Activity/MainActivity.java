@@ -175,6 +175,10 @@ public class MainActivity extends AppCompatActivity
                 intent = new Intent(this,Rotate3DActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.button7:
+                intent = new Intent(this,MoreInFragments.class);
+                startActivity(intent);
+                break;
         }
     }
 }

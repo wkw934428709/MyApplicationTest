@@ -31,7 +31,9 @@
         <activity android:name=".TouchAndMoveActivity" />
         <activity android:name=".LauncherDemo1" />
         <activity android:name=".ViewPageActivity" />
-        <activity android:name=".Rotate3DActivity"></activity>
+        <activity android:name=".Rotate3DActivity"/>
+        <activity android:name=".MoreInFragments"
+            android:theme="@style/AppTheme.MoreInFragmentsStyle"/>
     </application>
 
 </manifest>

@@ -3,14 +3,18 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#ff0000</item>
-        <item name="colorPrimaryDark">#ff6600</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#0099CC</item>
+        <item name="colorPrimaryDark">#669900</item>
+        <item name="colorAccent">#ff0000</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.MoreInFragmentsStyle" parent="AppTheme.NoActionBar">
+        <!--<item name="android:windowBackground">@color/colorPrimaryDarkgreen</item>-->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

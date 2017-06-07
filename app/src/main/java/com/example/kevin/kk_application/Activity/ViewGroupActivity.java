@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,8 @@ public class ViewGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_group);
         Log.e(TAG, " onCreate ");
         mContext = this;
+        MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer.start();
 //        initView();
         sendNotification();
     }

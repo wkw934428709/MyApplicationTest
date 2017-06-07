@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.example.kevin.kk_application.Activity.R;
+
 /**
  * Created by kevin on 12/15/16.
  */

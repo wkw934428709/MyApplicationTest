@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kevin.kk_application.Activity.R;
 import com.example.kevin.kk_application.MyUtils.MyUtils;
 
 import java.util.ArrayList;

@@ -22,6 +22,8 @@ import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import com.example.kevin.kk_application.Activity.R;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,View.OnClickListener{
 
